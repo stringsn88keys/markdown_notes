@@ -7,5 +7,7 @@ get '/' do
 end
 
 get '/*.md' do
-  markdown File.read(params[:splat].join('.') + ".md")
+  markdown '[\[Back to File listing\]](/)
+
+' + File.read(params[:splat].join('.') + ".md")
 end
