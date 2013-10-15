@@ -8,7 +8,7 @@ Installation
 
 - clone the project 
 - bundle install
-- add markdown notes (.md extension) to a notes folder inside the notes_markdown project
+- add markdown notes (.md extension) to a notes folder inside the markdown_notes project
 - run the server
         ruby markdown_notes.rb
 - browse to http://localhost:4567/ to view notes that the script has found.
