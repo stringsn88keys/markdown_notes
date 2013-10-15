@@ -1,0 +1,34 @@
+<%
+def display_name file_path
+  file_path.split('/')[-1]
+end
+
+def parent_name file_path
+  file_path.split('/')[-2]
+end
+
+def display_depth file_path
+  file_path.split('/').count
+end
+%>
+<% current_depth = 0 %>
+<% current_parent = nil %>
+
+<% file_list.each do |file| %>
+  <% old_depth = current_depth %>
+  <% old_parent = current_parent %>
+  <% current_depth = display_depth(file) %>
+  <% current_parent = parent_name(file) %>
+  <% if current_depth == old_depth && current_parent != old_parent %>
+    </ul>
+    <%= "<li>#{parent_name(file)}</li>" if current_depth >= 2 %>
+    <ul>
+  <% end %>
+  <% if current_depth > old_depth %>
+    <%= "<li>#{parent_name(file)}</li>" if current_depth >= 2 %>
+    <ul>
+  <% end %>
+  <%= "</ul>" if current_depth < old_depth %>
+  <li><a href="<%=file%>"><%=display_name(file)%></a></li>
+<% end %>
+</ul>
